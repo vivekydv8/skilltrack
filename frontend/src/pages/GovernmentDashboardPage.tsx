@@ -2064,13 +2064,13 @@ export const GovernmentDashboardPage: React.FC = () => {
                             boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                           }}
                           cursor={{ fill: '#f3f4f6' }}
-                          formatter={(value: number, name: string) => [
-                            value.toLocaleString('en-IN'),
+                          formatter={(value: any, name: any) => [
+                            value ? Number(value).toLocaleString('en-IN') : '0',
                             name === 'demand_count' ? 'Employer Demand' : 'Trained Supply'
                           ]}
                         />
-                        <Bar dataKey="demand_count" name="demand_count" fill="#b45309" radius={[0, 3, 3, 0]} maxBarSize={14} label={{ position: 'right', fontSize: 10, fill: '#92400e', formatter: (v: number) => v > 0 ? v : '' }} />
-                        <Bar dataKey="supply_count" name="supply_count" fill="#1a56db" radius={[0, 3, 3, 0]} maxBarSize={14} label={{ position: 'right', fontSize: 10, fill: '#1e40af', formatter: (v: number) => v > 0 ? v : '' }} />
+                        <Bar dataKey="demand_count" name="demand_count" fill="#b45309" radius={[0, 3, 3, 0]} maxBarSize={14} />
+                        <Bar dataKey="supply_count" name="supply_count" fill="#1a56db" radius={[0, 3, 3, 0]} maxBarSize={14} />
                       </BarChart>
                     </ResponsiveContainer>
                   </div>
