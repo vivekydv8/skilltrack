@@ -17,11 +17,13 @@ class Settings(BaseModel):
     _raw_db = os.getenv("DATABASE_URL", f"sqlite:///{_default_db}")
     if _raw_db.startswith("sqlite:///."):
         DATABASE_URL: str = f"sqlite:///{_default_db}"
+    elif _raw_db.startswith("postgres://"):
+        DATABASE_URL: str = _raw_db.replace("postgres://", "postgresql://", 1)
     else:
         DATABASE_URL: str = _raw_db
     
     # JWT Secret Key
-    SECRET_KEY: str = os.getenv("SECRET_KEY", "sih26135-maharashtra-skilltrack-secret-key-2026")
+    SECRET_KEY: str = os.getenv("SECRET_KEY", "vivekyadavshubhamyadavshashankgautam123345")
     
     # Twilio Live SMS Configuration
     TWILIO_ACCOUNT_SID: str = os.getenv("TWILIO_ACCOUNT_SID", "")
